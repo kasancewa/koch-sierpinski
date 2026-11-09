@@ -27,17 +27,25 @@ stays clearly visible.
 
 ## Some numbers
 
-For a start triangle of side L:
+For a start triangle of side $L$:
 
-- Number of snowflakes: 3^n
-- Total boundary length: 3L · (3/2)^n · (4/3)^k
-- Area of one snowflake as k → ∞: 8/5 of its start triangle
-- Fractal dimensions: Sierpiński triangle log 3 / log 2 ≈ 1.585,
-  Koch curve log 4 / log 3 ≈ 1.262
+- Number of snowflakes: $3^n$
+- Segments per snowflake: $3 \cdot 4^k$
+- Total boundary length:
 
-For n → ∞ at fixed k the snowflakes shrink and the set approaches
-the Sierpiński triangle. For k → ∞ at fixed n every boundary becomes
-a Koch curve with infinite length but finite area.
+$$
+\ell = 3L \left(\tfrac{3}{2}\right)^{n} \left(\tfrac{4}{3}\right)^{k}
+$$
+
+- Area of one snowflake as $k \to \infty$: $\tfrac{8}{5}$ of its start triangle
+- Fractal dimensions:
+
+$$
+D_\text{Sierpiński} = \frac{\ln 3}{\ln 2} \approx 1.585, \qquad
+D_\text{Koch} = \frac{\ln 4}{\ln 3} \approx 1.262
+$$
+
+The Koch bump on a triangle of side $L$ has height $\frac{\sqrt{3}}{6}L$, which equals the inradius of the neighbouring hole.
 
 ## Implementation
 
