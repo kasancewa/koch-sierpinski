@@ -66,4 +66,94 @@ Change `n` and `k` at the bottom of each script. Large values such as
 ### Hausdorff dimension
 
 Cover a set $F$ with sets $U_i$ of diameter at most $\delta$, add up
-$(\operatorname{diam} U_i)^s$, take the
+$(\mathrm{diam}\, U_i)^s$, take the cheapest covering and let
+$\delta \to 0$:
+$$
+\mathcal{H}^s(F) = \lim_{\delta \to 0} \, \inf \sum_i (\mathrm{diam}\, U_i)^s
+$$
+
+For small $s$ this is $\infty$, for large $s$ it is $0$. The Hausdorff
+dimension $\dim_H F$ is the value of $s$ where it jumps.
+
+**Koch curve.** At level $m$ the curve is covered by $4^m$ pieces of
+diameter $3^{-m}$, which costs
+
+$$
+4^m \left(3^{-m}\right)^s = \left(\frac{4}{3^s}\right)^m .
+$$
+
+This tends to $0$ for $3^s > 4$, so $\dim_H \le \ln 4 / \ln 3$. Putting
+mass $4^{-m}$ on every level-$m$ piece and applying the mass distribution
+principle gives the same lower bound. Hence
+
+$$
+\dim_H(\text{Koch}) = \frac{\ln 4}{\ln 3} \approx 1.262 .
+$$
+
+**Sierpiński triangle.** The same argument with $3^m$ pieces of diameter
+$2^{-m}$ gives
+
+$$
+\dim_H(\text{Sierpiński}) = \frac{\ln 3}{\ln 2} \approx 1.585 .
+$$
+
+Both values also solve the Moran equation $\sum_i r_i^D = 1$ for
+self-similar sets: $4 \left(\tfrac13\right)^D = 1$ and
+$3 \left(\tfrac12\right)^D = 1$.
+
+### Box-counting dimension
+
+Box counting allows only grid squares of one size $\varepsilon$. With
+$N(\varepsilon)$ the number of squares that touch $F$,
+
+$$
+\dim_B F = \lim_{\varepsilon \to 0} \frac{\ln N(\varepsilon)}{\ln (1/\varepsilon)} .
+$$
+
+Hausdorff coverings may mix sizes, so they are never more expensive, and
+$\dim_H F \le \dim_B F$ always holds.
+
+### Dimension of this fractal
+
+The answer depends on the limit. Hausdorff dimension is countably stable:
+a countable union has the supremum of the individual dimensions.
+
+| Set | Hausdorff | Box counting |
+|---|---|---|
+| Finite $n$ and $k$ (a polyline) | $1$ | $1$ |
+| $n$ fixed, $k \to \infty$ ($3^n$ Koch curves) | $1.262$ | $1.262$ |
+| Limit $n \to \infty$ (Sierpiński triangle) | $1.585$ | $1.585$ |
+| All snowflakes of all levels together | $1.262$ | $1.585$ |
+
+The last row shows the difference between the two. The set is a countable
+union of Koch curves, so its Hausdorff dimension is $\ln 4 / \ln 3$. At box
+size $\varepsilon = 2^{-m}$, the $3^m$ snowflakes of level $m$ alone need
+about $3^m = \varepsilon^{-\ln 3 / \ln 2}$ boxes, so its box-counting
+dimension is $\ln 3 / \ln 2$. Box counting sees how the snowflakes
+accumulate along the Sierpiński triangle, and Hausdorff does not.
+
+### Numerical estimate
+
+`dimensions.py` places points densely along the outline, counts occupied
+grid squares for $\varepsilon = 2^{-1}, \dots, 2^{-12}$ and prints the
+local slope of $\ln N$ against $\ln(1/\varepsilon)$. A finite picture has
+dimension $1$, but the slope shows three scale ranges. With leaf side
+$s = 2^{-n}$:
+
+- $\varepsilon \gg s$: slope $\approx 1.585$ (Sierpiński structure)
+- $s \, 3^{-k} \ll \varepsilon \ll s$: slope $\approx 1.262$ (Koch structure)
+- $\varepsilon \ll s \, 3^{-k}$: slope $\approx 1$ (straight segments)
+
+For $n = 4$, $k = 3$ the crossovers lie near $\varepsilon \approx 0.0625$
+and $\varepsilon \approx 0.0023$. Box counting on a grid is accurate to
+about $\pm 0.05$, so these are estimates that confirm the exact values.
+
+## Possible extensions
+
+- Use Koch curves as the edges of the Sierpiński triangle too
+- Swap the base shape (Minkowski island, …)
+- Interactive version in the browser (HTML/JavaScript)
+
+## License
+
+MIT
