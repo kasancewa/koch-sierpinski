@@ -148,12 +148,6 @@ For $n = 4$, $k = 3$ the crossovers lie near $\varepsilon \approx 0.0625$
 and $\varepsilon \approx 0.0023$. Box counting on a grid is accurate to
 about $\pm 0.05$, so these are estimates that confirm the exact values.
 
-## Possible extensions
-
-- Use Koch curves as the edges of the Sierpiński triangle too
-- Swap the base shape (Minkowski island, …)
-- Interactive version in the browser (HTML/JavaScript)
-
 ## License
 
 MIT
