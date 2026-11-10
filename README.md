@@ -69,9 +69,7 @@ Cover a set $F$ with sets $U_i$ of diameter at most $\delta$, add up
 $(\mathrm{diam}(U_i))^s$, take the cheapest covering and let
 $\delta \to 0$:
 
-$$
-\mathcal{H}^s(F) = \lim_{\delta \to 0} \inf \sum_i (\mathrm{diam}(U_i))^s
-$$
+$$\mathcal{H}^s(F) = \lim_{\delta \to 0} \inf \sum_i (\mathrm{diam}(U_i))^s$$
 For small $s$ this is $\infty$, for large $s$ it is $0$. The Hausdorff
 dimension $\dim_H F$ is the value of $s$ where it jumps.
 
